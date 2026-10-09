@@ -1,0 +1,6 @@
+{
+  "departure": { "publicName": "Stephansplatz, Wien", "longitude": 16.3738, "latitude": 48.2082 },
+  "destination": { "publicName": "Wien Hauptbahnhof", "longitude": 16.3765, "latitude": 48.185 },
+  "time": "REPLACE_WITH_FUTURE_ISO_DATETIME_WITH_OFFSET",
+  "seatsRequested": 1
+}

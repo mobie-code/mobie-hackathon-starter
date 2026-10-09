@@ -1,0 +1,142 @@
+{
+  "info": {
+    "name": "mobie Hackathon Starter",
+    "description": "Log in through http://localhost:3000 first. Set your local team key below; never publish its value. These calls target YOUR STARTER, which renews Auth0 tokens and calls the normal mobie REST API. Set ride_time and coordinates to the event test rides. Run booking manually only after explicit consent.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{starter_api_key}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "starter_url",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "starter_api_key",
+      "value": ""
+    },
+    {
+      "key": "ride_time",
+      "value": "REPLACE_WITH_FUTURE_ISO_DATETIME_WITH_OFFSET"
+    },
+    {
+      "key": "ride_id",
+      "value": "REPLACE_WITH_SELECTED_RIDE_ID"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Verify passenger account",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{starter_url}}/api/me",
+        "description": "Uses the staging passenger logged into this starter."
+      }
+    },
+    {
+      "name": "2. Resolve an address",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{starter_url}}/api/locations/search",
+        "description": "Mapbox Geocoding v6 permanent=true; uses your own token and may be billed. Returns coordinates for addresses/streets, not POIs.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"Stephansplatz 1, Wien\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "3. Search rides",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{starter_url}}/api/rides/search",
+        "description": "Replace both locations with confirmed candidates. Response is an array; select a ride.id and set ride_id.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"departure\": {\n    \"publicName\": \"Stephansplatz, Wien\",\n    \"longitude\": 16.3738,\n    \"latitude\": 48.2082\n  },\n  \"destination\": {\n    \"publicName\": \"Wien Hauptbahnhof\",\n    \"longitude\": 16.3765,\n    \"latitude\": 48.185\n  },\n  \"time\": \"{{ride_time}}\",\n  \"seatsRequested\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "4. Submit booking AFTER consent",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{starter_url}}/api/rides/{{ride_id}}/join-detailed",
+        "description": "Replace locations/time with the searched passenger trip. Change confirmed to true only after explicit consent. Success means PENDING driver approval. Do not blindly retry writes.",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"departure\": {\n    \"publicName\": \"Stephansplatz, Wien\",\n    \"longitude\": 16.3738,\n    \"latitude\": 48.2082\n  },\n  \"destination\": {\n    \"publicName\": \"Wien Hauptbahnhof\",\n    \"longitude\": 16.3765,\n    \"latitude\": 48.185\n  },\n  \"time\": \"{{ride_time}}\",\n  \"seatsRequested\": 1,\n  \"confirmed\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "5. Passenger details AFTER approval",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{starter_url}}/api/rides/{{ride_id}}/rider-detail",
+        "description": "Only after the driver approved the booking in the staging app."
+      }
+    },
+    {
+      "name": "Login status (no tokens)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{starter_url}}/api/status",
+        "description": "Inspect whether the starter has an active session."
+      }
+    },
+    {
+      "name": "Driver-only details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{starter_url}}/api/rides/{{ride_id}}",
+        "description": "Only usable while logged in as this ride’s driver; not a pre-booking passenger lookup."
+      }
+    }
+  ]
+}
