@@ -1,22 +1,15 @@
 # Authentication
 
-## Organizer: configure once
+## Team setup
 
-Create a dedicated **public Auth0 application** for the hackathon in the staging tenant (a Native application for this localhost/server example, with Token Endpoint Authentication Method **None**). It must use the same API audience as the staging backend.
+Use the supplied staging Auth0 configuration and your staging passenger account. After running `npm run setup`, fill in `.env`:
 
-Configure:
+- `AUTH0_DOMAIN`: the supplied hostname, without `https://`.
+- `AUTH0_CLIENT_ID`: the supplied public client ID.
+- `AUTH0_AUDIENCE`: the exact supplied API audience.
+- `AUTH0_REDIRECT_URI`: keep `http://localhost:3000/callback` for local development. A hosted callback must be registered before use.
 
-- Grant types: **Authorization Code** and **Refresh Token**.
-- Refresh Token Rotation: **enabled**. Use appropriate absolute/idle expiry covering the event.
-- API **Allow Offline Access**: enabled.
-- Allowed Callback URLs: **`http://localhost:3000/callback`**. Add exact hosted callback URLs only when required. There is no wildcard callback requirement.
-- Enable the staging database connection for this client.
-- Allow this client to request **user** access tokens for the mobie API. The existing tenant configuration uses `subject_type_authorization.user.policy: require_client_grant`; a new application therefore also needs the corresponding user client grant/API authorization. Copy the relevant arrangement from the existing mobie client, not a machine-to-machine grant.
-- Keep the existing post-login Action that supplies mobie user claims enabled for this application/connection.
-
-The sample public client uses PKCE and needs **no client secret**. If using a confidential web application instead, its server authentication must be implemented accordingly; simply filling in this sample with such a client is not sufficient.
-
-Share the Auth0 domain (hostname without `https://`), client ID, exact API audience and staging passenger credentials with the team. Public configuration is not a credential; passwords and tokens are. Do not publish the private backend repository or production credentials with the starter. No Auth0 dashboard configuration is changed automatically by this repository.
+The starter uses PKCE and needs **no client secret**. Keep passwords, tokens and your generated `STARTER_API_KEY` out of commits.
 
 ## Team: what happens
 
@@ -54,8 +47,8 @@ The team key gates the starter API and the start of login. Do not put it in URLs
 | --- | --- |
 | Callback URL mismatch | Exact protocol, hostname, port and `/callback` match the registered URL |
 | Invalid state | Use the same browser/hostname; restart login instead of reloading an old callback |
-| Missing refresh token | `offline_access`, API offline access, grant types and rotating refresh enabled |
-| Access denied during authorization | Application enabled for the connection and authorized for user access to the API |
+| Missing refresh token | Check the supplied client configuration and contact hackathon support |
+| Access denied during authorization | Check your staging account and supplied client ID; contact hackathon support if access is still denied |
 | Starter says use STARTER_API_KEY | You sent the wrong bearer token to the starter |
 | mobie returns 401 | Audience, issuer, staging tenant and token expiry; log in again |
 | Login lost after editing code | Watch mode restarted the process; use `npm start` for demonstrations |

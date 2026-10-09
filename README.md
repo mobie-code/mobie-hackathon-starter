@@ -8,7 +8,7 @@ This starter provides Auth0 login with PKCE, automatic token renewal, a small RE
 
 ## Start in five steps
 
-Requirements: Node.js **22+** (24 LTS recommended), a mobie staging passenger account, and the public Auth0 configuration provided by the organizer. Creating accounts and test rides happens in the staging app. A driver account needs the appropriate approval and a vehicle.
+Requirements: Node.js **22+** (24 LTS recommended), a mobie staging passenger account, and the supplied public Auth0 configuration. Creating accounts and test rides happens in the staging app. A driver account needs the appropriate approval and a vehicle.
 
 ```sh
 git clone https://github.com/mobie-code/mobie-hackathon-starter.git
@@ -19,7 +19,7 @@ npm run setup
 
 1. Fill in `.env`: `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, `AUTH0_AUDIENCE` and your own `MAPBOX_ACCESS_TOKEN`. `npm run setup` creates a random `STARTER_API_KEY` and does not overwrite an existing `.env`.
 2. Run `npm run dev` and open **http://localhost:3000**. Use this exact hostname if your callback is `http://localhost:3000/callback`.
-3. Enter your `STARTER_API_KEY`, click **Bei Auth0 anmelden**, and log in with the staging **passenger** account. The organizer must have registered the callback URL first.
+3. Enter your `STARTER_API_KEY`, click **Bei Auth0 anmelden**, and log in with the staging **passenger** account.
 4. After returning, enter the team key again and click **API-Verbindung prüfen**. This calls `GET /me` and verifies access to the actual mobie API.
 5. Copy `examples/search.json` to a local file, set a future ISO datetime with offset and coordinates matching a test ride, then run:
 
@@ -63,7 +63,7 @@ For a local tunnel you can keep the OAuth callback on `localhost`: login in the 
 
 The sample uses **Geocoding v6 with `permanent=true`**, since mobie persists locations even during ride search. Your Mapbox account needs the prerequisites for permanent geocoding (a valid payment card or an eligible enterprise agreement); calls can incur costs. The example searches addresses, streets and places in Austria in German. It does **not** provide POI search.
 
-For POIs, extend the client using an appropriately licensed dataset/service. Mapbox Search Box results are temporary-use by default; do not assume they may be stored in mobie without the required agreement. Ask the organizer for suitable test addresses or a reusable dataset if needed. Preserve attribution in any UI displaying results.
+For POIs, extend the client using an appropriately licensed dataset/service. Mapbox Search Box results are temporary-use by default; do not assume they may be stored in mobie without the required agreement. Preserve attribution in any UI displaying results.
 
 - [Mapbox permanent geocoding](https://docs.mapbox.com/api/search/geocoding/#storing-geocoding-results)
 - [Mapbox Search Box restrictions](https://docs.mapbox.com/api/search/search-box/#search-box-api-restrictions-and-limits)
@@ -71,8 +71,7 @@ For POIs, extend the client using an appropriately licensed dataset/service. Map
 ## Documentation
 
 - [Existing mobie REST API and starter endpoints](docs/api.md)
-- [Auth0 setup, login and refresh](docs/authentication.md)
-- [Organizer setup and acceptance check](docs/organizer.md)
+- [Authentication, login and refresh](docs/authentication.md)
 - [Challenge description, German and English](docs/challenge.md)
 - [Importable Postman collection](docs/postman_collection.json)
 
@@ -83,7 +82,7 @@ npm test
 npm start
 ```
 
-`npm run dev` restarts on code changes (and therefore clears the login). Use `npm start` during calls/demos. Tests run locally against controlled Auth0/Mapbox/mobie responses, without credentials, charges or staging writes. CI tests Node 22 and 24. Live Auth0 login and an actual phone-to-booking run require organizer credentials and have not been represented as passing by these tests.
+`npm run dev` restarts on code changes (and therefore clears the login). Use `npm start` during calls/demos. Tests run locally against controlled Auth0/Mapbox/mobie responses, without credentials, charges or staging writes. CI tests Node 22 and 24. These tests do not cover live Auth0 login or an actual phone-to-booking run.
 
 | File | What to change |
 | --- | --- |

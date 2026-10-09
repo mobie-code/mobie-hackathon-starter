@@ -18,4 +18,4 @@ Verwendet einen eigenen Mapbox-Zugang. Der Starter zeigt Adress-/Straßen-Geocod
 
 Ein zusätzlicher Matcher für fehlerhafte Transkriptionen ist optional. Der Telefonassistent kann dafür euren Server aufrufen; ihr entscheidet anhand realer Ortsdaten und gegebenenfalls einer Rückfrage, welche Koordinaten an mobie gesendet werden.
 
-Abgabe: ein funktionierender Telefonassistent und eine kurze Beschreibung von Aufbau, API-Nutzung und bekannten Grenzen. Die Organisatoren teilen Zugangsdaten, Staging-App, Testfahrten, Telefonie-/Credit-Regelung und Abgabezeit separat mit.
+Abgabe: ein funktionierender Telefonassistent und eine kurze Beschreibung von Aufbau, API-Nutzung und bekannten Grenzen. Zugangsdaten, Staging-App, Testfahrten, Telefonie-/Credit-Regelung und Abgabezeit erhaltet ihr separat.

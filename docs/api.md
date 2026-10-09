@@ -155,7 +155,7 @@ Check the HTTP status first. The normal REST API is not the old voice webhook: d
 - Auth errors include an expired token, wrong issuer/audience or missing user grant.
 - Search/join can fail for invalid coordinates/time, an unavailable ride, insufficient seats, own-ride booking, duplicate requests or payment requirements.
 - Detail endpoints apply the access restrictions described above. Exact error bodies/status mapping depend on the deployed backend; do not hard-code a single error-body schema.
-- The starter preserves upstream HTTP error status and returns a short `{ "error": "mobie API returned HTTP ..." }`. Upstream response bodies are intentionally not echoed, since provider errors can contain credentials. For deeper diagnostics, reproduce in staging and ask the organizer to inspect backend logs.
+- The starter preserves upstream HTTP error status and returns a short `{ "error": "mobie API returned HTTP ..." }`. Upstream response bodies are intentionally not echoed, since provider errors can contain credentials. For deeper diagnostics, contact hackathon support with the endpoint, HTTP status and request time.
 
 ## Starter HTTP endpoints
 
