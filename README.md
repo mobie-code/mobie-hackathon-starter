@@ -19,8 +19,8 @@ npm run setup
 
 1. Fill in `.env`: `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, `AUTH0_AUDIENCE` and your own `MAPBOX_ACCESS_TOKEN`. `npm run setup` creates a random `STARTER_API_KEY` and does not overwrite an existing `.env`.
 2. Run `npm run dev` and open **http://localhost:3000**. Use this exact hostname if your callback is `http://localhost:3000/callback`.
-3. Enter your `STARTER_API_KEY`, click **Bei Auth0 anmelden**, and log in with the staging **passenger** account.
-4. After returning, enter the team key again and click **API-Verbindung prüfen**. This calls `GET /me` and verifies access to the actual mobie API.
+3. Enter your `STARTER_API_KEY`, click **Sign in with Auth0**, and log in with the staging **passenger** account.
+4. After returning, enter the team key again and click **Check API connection**. This calls `GET /me` and verifies access to the actual mobie API.
 5. Copy `examples/search.json` to a local file, set a future ISO datetime with offset and coordinates matching a test ride, then run:
 
 ```sh
@@ -72,7 +72,7 @@ For POIs, extend the client using an appropriately licensed dataset/service. Map
 
 - [Existing mobie REST API and starter endpoints](docs/api.md)
 - [Authentication, login and refresh](docs/authentication.md)
-- [Challenge description, German and English](docs/challenge.md)
+- [Challenge description](docs/challenge.md)
 - [Importable Postman collection](docs/postman_collection.json)
 
 ## Develop

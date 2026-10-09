@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>mobie Hackathon Starter</title><script src="/page.js" defer></script></head>
 <body>
 <main>
 <h1>mobie Hackathon Starter</h1>
-<p>Melde dich einmal mit deinem Staging-Testfahrgast an. Der Server erneuert den Access Token automatisch.</p>
-<p>Ein Server-Prozess gehört zu einem Testfahrgast. Alle Telefonanrufe über diesen Starter verwenden dessen Konto.</p>
+<p>Sign in once with your staging test passenger account. The server refreshes the access token automatically.</p>
+<p>Each server process uses one test passenger account. All phone calls through this starter use that account.</p>
 <form id="login-form">
-<label for="api-key">Team-Schlüssel (STARTER_API_KEY aus deiner .env)</label><br>
+<label for="api-key">Team key (STARTER_API_KEY from your .env)</label><br>
 <input id="api-key" type="password" autocomplete="off" required minlength="32" size="45"><br>
-<button type="submit">Bei Auth0 anmelden</button>
-<button type="button" id="status">API-Verbindung prüfen</button>
-<button type="button" id="logout">Starter abmelden</button>
+<button type="submit">Sign in with Auth0</button>
+<button type="button" id="status">Check API connection</button>
+<button type="button" id="logout">Sign out of starter</button>
 </form>
 <p id="message" role="status" aria-live="polite"></p>
-<p>Nach dem Login: Team-Schlüssel erneut eingeben und die API-Verbindung prüfen. Der Schlüssel wird nicht im Browser gespeichert.</p>
-<p>Die Dokumentation und Beispielaufrufe findest du in der README und unter docs/api.md in deinem Repository.</p>
-<p>Tokens verbleiben im Arbeitsspeicher. Nach einem Server-Neustart ist ein neuer Login erforderlich.</p>
+<p>After signing in, enter your team key again and check the API connection. The key is not stored in the browser.</p>
+<p>See the README and docs/api.md in your repository for documentation and example requests.</p>
+<p>Tokens stay in memory. You must sign in again after restarting the server.</p>
 </main>
 </body>
 </html>

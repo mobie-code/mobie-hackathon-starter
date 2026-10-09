@@ -1,21 +1,17 @@
 # mobie Voice AI Challenge
 
-## Kurzbeschreibung
-
-Entwickelt in 24 Stunden eine Lösung mit einem KI-Telefonassistenten eurer Wahl, die Menschen bei der Suche und Buchung einer Mitfahrgelegenheit unterstützt. Der Assistent versteht deutschsprachige Fahrtwünsche, klärt Start und Ziel mithilfe von Mapbox und erstellt nach ausdrücklicher Zustimmung eine echte Buchungsanfrage über die mobie-REST-API. Optional könnt ihr einen Matcher entwickeln, der falsch verstandene österreichische Straßen- und Ortsnamen erkennt und korrigiert.
-
 ## Short description
 
 Build a solution using an AI phone assistant of your choice in 24 hours. It should understand German-speaking callers' travel needs, resolve start and destination using Mapbox, find suitable rides and submit a real booking request through the mobie REST API after explicit confirmation. Optionally, develop a matcher that identifies and corrects mistranscribed Austrian street and place names.
 
-## Aufgabenstellung
+## Your task
 
-Bindet einen telefonisch erreichbaren KI-Assistenten an die mobie-Staging-API an. Erfasst Start, Ziel, Zeitpunkt und benötigte Sitzplätze. Bestimmt eindeutige Orte, fragt bei Unklarheiten nach und übergebt deren Koordinaten an die Fahrtsuche. Erklärt die Ergebnisse und beantwortet Rückfragen anhand der gefundenen Fahrten.
+Connect a phone-accessible AI assistant to the mobie staging API. Collect the caller's starting point, destination, travel date and time, and required seats. Resolve locations unambiguously, ask follow-up questions when needed, and send their coordinates to the ride search. Explain the results and answer questions using the returned ride information.
 
-Nach der Auswahl fasst ihr Fahrt, Abholort, Ziel, Zeitpunkt, Sitzplätze und einen verfügbaren Preis zusammen. Erst nach ausdrücklicher Zustimmung erstellt ihr die Buchungsanfrage. Diese muss tatsächlich im Backend erscheinen. Der Fahrer muss die Anfrage danach noch bestätigen; kommuniziert diesen Status korrekt.
+Once the caller selects a ride, summarize the ride, pickup location, destination, time, seats and available price information. Submit the booking request only after explicit confirmation. The request must actually be stored in the backend. The driver still needs to approve it, so communicate the pending status accurately.
 
-Verwendet einen eigenen Mapbox-Zugang. Der Starter zeigt Adress-/Straßen-Geocoding mit dauerhaft speicherbaren Ergebnissen. Die verwendete Datenquelle muss das Speichern der Ortsdaten in mobie erlauben. Telefonieplattform, Gesprächsführung und Implementierung bleiben euch überlassen. Mindestens eine Person pro Team sollte Deutsch sprechen.
+Use your own Mapbox account. The starter demonstrates address and street geocoding with results that may be stored permanently. Your data source must permit storing location data in mobie. You choose the phone platform, conversation design and implementation. At least one team member should speak German.
 
-Ein zusätzlicher Matcher für fehlerhafte Transkriptionen ist optional. Der Telefonassistent kann dafür euren Server aufrufen; ihr entscheidet anhand realer Ortsdaten und gegebenenfalls einer Rückfrage, welche Koordinaten an mobie gesendet werden.
+An additional matcher for transcription errors is optional. The phone assistant can call your server for this step; use actual location data and, when necessary, a follow-up question to decide which coordinates to send to mobie.
 
-Abgabe: ein funktionierender Telefonassistent und eine kurze Beschreibung von Aufbau, API-Nutzung und bekannten Grenzen. Zugangsdaten, Staging-App, Testfahrten, Telefonie-/Credit-Regelung und Abgabezeit erhaltet ihr separat.
+Submit a working phone assistant and a short description of its architecture, API usage and known limitations. Access details, the staging app, test rides, phone service and credit arrangements, and the submission deadline will be provided separately.
