@@ -6,6 +6,8 @@ This starter provides Auth0 login with PKCE, automatic token renewal, a small RE
 
 **One running starter = one staging test passenger.** Every caller handled by that starter acts as that passenger. It does not identify real passengers by caller phone number. Use separate instances/accounts for separate team passengers. A booking request still needs the driver's approval.
 
+For the demo, the account you sign into in the starter's browser login represents the caller. Requests already pass through the team server, which uses that account's Auth0 token. If someone calls from a different phone number, their searches and booking requests still use the same signed-in account. Caller phone-number matching is not implemented in this starter and is not required for the challenge. A future version could associate callers with their own mobie accounts, with appropriate identity verification and authorization to act for each user.
+
 ## Start in five steps
 
 Requirements: Node.js **22+** (24 LTS recommended), a mobie staging passenger account, and the supplied public Auth0 configuration. Creating accounts and test rides happens in the staging app. A driver account needs the appropriate approval and a vehicle.

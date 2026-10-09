@@ -16,4 +16,6 @@ An additional matcher for transcription errors is optional. The phone assistant 
 
 You will receive access to the mobie staging app for the hackathon. You can create as many test user accounts as you need, set up test rides and approve booking requests in the app. Use separate driver and passenger accounts; drivers need the appropriate approval and a vehicle before offering rides. Each running starter uses one signed-in passenger account at a time.
 
+For this challenge, the passenger account signed into the starter represents the caller. All calls to that starter search and book using this account, regardless of the incoming phone number. The team server already handles the API requests, but automatic phone-number matching to individual mobie users is not implemented or required. Matching callers to their own accounts, with appropriate identity verification and authorization, is a possible future extension.
+
 Submit a working phone assistant and a short description of its architecture, API usage and known limitations. Access details, the staging app, test rides, phone service and credit arrangements, and the submission deadline will be provided separately.
