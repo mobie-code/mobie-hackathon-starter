@@ -10,6 +10,8 @@ This starter provides Auth0 login with PKCE, automatic token renewal, a small RE
 
 Requirements: Node.js **22+** (24 LTS recommended), a mobie staging passenger account, and the supplied public Auth0 configuration. Creating accounts and test rides happens in the staging app. A driver account needs the appropriate approval and a vehicle.
 
+You will receive access to the mobie staging app for the hackathon. You can create as many test user accounts as you need and use the app to set up test rides and approve booking requests. Use separate driver and passenger accounts to test the complete flow. Each running starter still uses one signed-in passenger account at a time.
+
 ```sh
 git clone https://github.com/mobie-code/mobie-hackathon-starter.git
 cd mobie-hackathon-starter
