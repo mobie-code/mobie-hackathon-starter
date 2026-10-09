@@ -40,7 +40,7 @@ For the challenge, send a resolved location:
 - `rawFeatureJson` is an optional backend field containing a **string**, not an object. The starter does not require or forward it.
 - New coordinates can be persisted as location records by the backend even for a search. Only send data you are permitted to store. The included Mapbox example uses permanent geocoding.
 
-Neither the direct REST search nor the join endpoint performs free-text address lookup for you. Use your own Mapbox token/data source and clarify which candidate the caller means.
+Neither the direct REST search nor the join endpoint performs free-text address lookup for you. Use Mapbox or another geocoding service, POI search API or suitable location dataset, and clarify which candidate the caller means. Any provider can be used if its results may be stored in mobie; send resolved coordinates using the location payload above. The starter's included lookup endpoint uses Mapbox until you adapt or replace that integration.
 
 ## Search: `POST /rides/search`
 
